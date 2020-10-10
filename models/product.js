@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
     imageGallery: [String],
     size: { type: String, required: true },
     ingredients: [String],
+    allergens: [String],
     packageDescription: { type: String, required: true },
     packageType: { type: String, required: true },
     country: { type: String, required: true },
