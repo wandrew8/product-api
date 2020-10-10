@@ -29,3 +29,16 @@ module.exports.searchProduct = async (string) => {
     .limit(20).lean();
   return products;
 };
+
+module.exports.addProduct = async(data) => {
+    return  await Product.create(data);
+}
+
+module.exports.updateProduct = async(id, data) => {
+    return await Product.updateOne(
+        { _id: id },
+        {
+        $set: data,
+        $currentDate: { lastModified: true }
+        })
+}

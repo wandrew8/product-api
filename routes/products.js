@@ -18,4 +18,50 @@ router.get("/", async (req, res, next) => {
     res.json(products);
 });
 
+router.put("/:id", async (req, res, next) => {
+    const { id } = req.params;
+    const { category, name, description, subtitle, mainImage, imageGallery, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
+    const update = {
+        category,
+        name,
+        description, 
+        subtitle, 
+        mainImage, 
+        imageGallery, 
+        size,
+        ingredients,
+        allergens,
+        packageDescription,
+        packageType,
+        country,
+        price,
+        inventory
+    }
+    const updatedProduct = await productDAO.updateProduct(id, update);
+    res.json(updatedProduct);
+})
+
+router.post("/", async (req, res, next) => {
+    const { category, name, description, subtitle, mainImage, imageGallery, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
+    const newProduct = {
+        category,
+        name,
+        description, 
+        subtitle, 
+        mainImage, 
+        imageGallery, 
+        size,
+        ingredients,
+        allergens,
+        packageDescription,
+        packageType,
+        country,
+        price,
+        inventory
+    }
+    const product = await productDAO.addProduct(newProduct);
+    res.json(product);
+})
+
+
 module.exports = router;
