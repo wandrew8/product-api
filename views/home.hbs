@@ -1,2 +1,44 @@
 <h1>Welcome to the World Treats API</h1>
 <a href="/products">View Products</a>
+<form action="/products/add-item" method="post">
+    <fieldset>
+        <legend>Add Product Form</legend>
+        <div class="grid">
+
+            <!-- Markup example 1: input is inside label -->
+            <label for="category">
+                Category
+                <select name="category" id="category" required>
+                    <option value="volvo">Candy</option>
+                    <option value="saab">Cake</option>
+                    <option value="mercedes">Chips</option>
+                    <option value="audi">Beverage</option>
+                </select>
+            </label>
+
+            <label for="name">
+                Product Name
+                <input type="text" id="name" name="name" placeholder="Product Name" required>
+            </label>
+
+            <label for="subtitle">
+                Product Subtitle
+                <textarea id="subtitle" name="subtitle" rows="2" cols="50"
+                    placeholder="Add a short witty blurb of the product..." required></textarea>
+            </label>
+
+            <label for="description">
+                Product Description
+                <textarea id="description" name="description" rows="4" cols="50"
+                    placeholder="Add a description of the product..." required></textarea>
+            </label>
+
+            <label for="description">
+                Product Image
+                <button id="upload_widget" class="cloudinary-button">Upload files</button>
+            </label>
+        </div>
+
+        <button type="submit">Add Product</button>
+    </fieldset>
+</form>

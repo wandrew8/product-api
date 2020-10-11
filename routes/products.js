@@ -10,6 +10,11 @@ router.get("/:name", async (req, res, next) => {
   res.json(product);
 });
 
+router.get("/add-item", (req, res, next) => {
+    const query = req.query;
+    console.log(query);
+})
+
 //GET /products Retrieves all products
 router.get("/", async (req, res, next) => {
     let { page } = req.query;
