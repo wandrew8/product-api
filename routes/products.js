@@ -10,9 +10,27 @@ router.get("/:name", async (req, res, next) => {
   res.json(product);
 });
 
-router.get("/add-item", (req, res, next) => {
-    const query = req.query;
-    console.log(query);
+router.post("/add-item", async (req, res, next) => {
+    const { category, name, description, subtitle, mainImage, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
+    const ingredientsArray = ingredients.includes(",") ? ingredients.split(",") : [ingredients];
+    const allergensArray = allergens.includes(",") ? allergens.split(",") : [allergens];
+    const product = {
+        category,
+        name,
+        description,
+        subtitle,
+        mainImage,
+        size, 
+        ingredients: ingredientsArray,
+        allergens: allergensArray,
+        packageDescription,
+        packageType,
+        country,
+        price, 
+        inventory
+    }
+    const newProduct = await productDAO.addProduct(product);
+    res.json(newProduct);
 })
 
 //GET /products Retrieves all products
