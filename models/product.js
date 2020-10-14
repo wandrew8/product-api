@@ -14,7 +14,8 @@ const productSchema = new mongoose.Schema({
     packageType: { type: String, required: true },
     country: { type: String, required: true },
     price: { type: String, required: true },
-    inventory: { type: Number, required: true }
+    inventory: { type: Number, required: true },
+    dateAdded: { type: Date, default: Date().now}
 });
 
 productSchema.index({ name: "text" });
