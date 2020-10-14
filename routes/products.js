@@ -80,7 +80,8 @@ router.post("/", async (req, res, next) => {
         packageType,
         country,
         price,
-        inventory
+        inventory,
+        dateAdded: Date().now
     }
     const product = await productDAO.addProduct(newProduct);
     res.json(product);
