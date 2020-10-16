@@ -17,7 +17,8 @@ module.exports.getAll = async (page) => {
 };
 
 module.exports.getProduct = async (name) => {
-  return await Product.findOne({ name: name }).lean();
+  const formattedName = name.split("-").join(" ");
+  return await Product.findOne({ name: formattedName }).lean();
 };
 
 module.exports.searchProduct = async (string) => {
