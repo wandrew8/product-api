@@ -14,7 +14,7 @@ router.post("/add-item", async (req, res, next) => {
     const { category, name, description, subtitle, mainImage, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
     const ingredientsArray = ingredients.includes(",") ? ingredients.split(",") : [ingredients];
     const allergensArray = allergens.includes(",") ? allergens.split(",") : [allergens];
-    const imageGalleryArry = imageGallery.includes(",") ? imageGallery.split(",") : [imageGallery];
+    const imageGalleryArray = imageGallery.includes(",") ? imageGallery.split(",") : [imageGallery];
     const product = {
         category,
         name,
