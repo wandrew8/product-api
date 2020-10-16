@@ -11,7 +11,7 @@ router.get("/:name", async (req, res, next) => {
 });
 
 router.post("/add-item", async (req, res, next) => {
-    const { category, name, description, subtitle, mainImage, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
+    const { category, name, description, subtitle, mainImage, imageGallery, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
     const ingredientsArray = ingredients.includes(",") ? ingredients.split(",") : [ingredients];
     const allergensArray = allergens.includes(",") ? allergens.split(",") : [allergens];
     const imageGalleryArray = imageGallery.includes(",") ? imageGallery.split(",") : [imageGallery];
