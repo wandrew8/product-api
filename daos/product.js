@@ -43,3 +43,11 @@ module.exports.updateProduct = async(id, data) => {
         $currentDate: { lastModified: true }
         })
 }
+
+module.exports.getByCategory = async(category) => {
+  return await Product.find({ category: category });
+}
+
+module.exports.deleteOne = async(id) => {
+  return await Product.findByIdAndDelete(id)
+}

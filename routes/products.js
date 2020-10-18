@@ -35,6 +35,12 @@ router.post("/add-item", async (req, res, next) => {
     res.json(newProduct);
 })
 
+router.get("/category/:category", async (req, res, next) => {
+    const { category } = req.params;
+    const products = await productDAO.getByCategory(category);
+    res.json(products);
+})
+
 //GET /products Retrieves all products
 router.get("/", async (req, res, next) => {
     let { page } = req.query;
@@ -87,6 +93,12 @@ router.post("/", async (req, res, next) => {
     }
     const product = await productDAO.addProduct(newProduct);
     res.json(product);
+})
+
+router.delete("/remove/:id", async (req, res, next) => {
+    const { id } = req.params;
+    const deletedItem = await productDAO.deleteOne(id);
+    res.json(deletedItem);
 })
 
 
