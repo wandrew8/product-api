@@ -10,6 +10,11 @@ router.get("/:name", async (req, res, next) => {
   res.json(product);
 });
 
+router.get("/countries/getAll", async (req, res, next) => {
+    const countries = await productDAO.getAllCountries();
+    res.json(countries);
+})
+
 router.post("/add-item", async (req, res, next) => {
     const { category, name, description, subtitle, mainImage, imageGallery, size, ingredients, allergens, packageDescription, packageType, country, price, inventory } = req.body;
     const ingredientsArray = ingredients.includes(",") ? ingredients.split(",") : [ingredients];
