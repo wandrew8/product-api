@@ -26,6 +26,10 @@ module.exports.getAllCountries = async () => {
 
 }
 
+module.exports.getCountriesByCategory = async (category) => {
+  return await Product.distinct( "country", { category: category } )
+}
+
 module.exports.searchProduct = async (string) => {
   const products = await Product.find(
     { $text: {$search: string}},
