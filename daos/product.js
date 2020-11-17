@@ -23,11 +23,14 @@ module.exports.getProduct = async (name) => {
 
 module.exports.getAllCountries = async () => {
   return await Product.distinct( "country" )
-
 }
 
 module.exports.getCountriesByCategory = async (category) => {
   return await Product.distinct( "country", { category: category } )
+}
+
+module.exports.getNewProducts = async (amount) => {
+  return await Product.find().sort({ dateAdded: -1 }).limit(parseInt(amount))
 }
 
 module.exports.searchProduct = async (string) => {

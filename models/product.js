@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     country: { type: String, required: true },
     price: { type: String, required: true },
     inventory: { type: Number, required: true },
-    dateAdded: { type: Date, default: Date().now}
+    dateAdded: { type: Date, default: Date.now()}
 });
 
 productSchema.index({ name: "text" });

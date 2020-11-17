@@ -52,6 +52,12 @@ router.get("/category/:category", async (req, res, next) => {
     res.json(products);
 })
 
+router.get("/newproducts/:amount", async (req, res, next) => {
+    const { amount } = req.params;
+    const products = await productDAO.getNewProducts(amount);
+    res.json(products);
+})
+
 //GET /products Retrieves all products
 router.get("/", async (req, res, next) => {
     let { page } = req.query;
@@ -100,7 +106,7 @@ router.post("/", async (req, res, next) => {
         country,
         price,
         inventory,
-        dateAdded: Date().now
+        dateAdded: Date.now()
     }
     const product = await productDAO.addProduct(newProduct);
     res.json(product);
