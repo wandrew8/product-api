@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+module.exports = {};
 
 const productDAO = require("../daos/product");
 
@@ -56,6 +57,13 @@ router.get("/newproducts/:amount", async (req, res, next) => {
     const { amount } = req.params;
     const products = await productDAO.getNewProducts(amount);
     res.json(products);
+})
+
+router.get("/pages/getAll", async (req, res, next) => {
+    const products = await productDAO.getAll();
+    const numPages = Math.ceil(products.length / 12);
+    console.log(numPages)
+    res.json(numPages)
 })
 
 //GET /products Retrieves all products

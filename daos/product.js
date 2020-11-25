@@ -5,13 +5,13 @@ module.exports = {};
 module.exports.getAll = async (page) => {
   if (page > 0) {
     return await Product.find()
-      .limit(20)
-      .skip(20 * (page - 1))
+      .limit(12)
+      .skip(12 * (page - 1))
       .lean();
   } else {
     return await Product.find()
-      .limit(20)
-      .skip(20 * page)
+      .limit(12)
+      .skip(12 * page)
       .lean();
   }
 };
