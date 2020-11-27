@@ -69,7 +69,8 @@ router.get("/pages/getAll", async (req, res, next) => {
     console.log(numPages)
     const info = {
         totalPages: numPages,
-        pages: pages
+        pages: pages,
+        totalItems: products.length
     }
     res.json(info)
 })
