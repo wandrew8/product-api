@@ -61,7 +61,7 @@ router.get("/newproducts/:amount", async (req, res, next) => {
 
 router.get("/pages/getAll", async (req, res, next) => {
     const products = await productDAO.getAll();
-    const numPages = Math.ceil(products.length / 12);
+    const numPages = Math.ceil(products.length / 2);
     console.log(numPages)
     res.json(numPages)
 })
