@@ -62,8 +62,16 @@ router.get("/newproducts/:amount", async (req, res, next) => {
 router.get("/pages/getAll", async (req, res, next) => {
     const products = await productDAO.getAllProducts();
     const numPages = Math.ceil(products.length / 2);
+    const pages = [];
+    for(let i = 0; i < numPages; i++) {
+        pages.push(i + 1);
+    }
     console.log(numPages)
-    res.json(numPages)
+    const info = {
+        totalPages: numPages,
+        pages: pages
+    }
+    res.json(info)
 })
 
 //GET /products Retrieves all products
