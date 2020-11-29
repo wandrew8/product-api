@@ -16,7 +16,7 @@ module.exports.getAll = async (page) => {
   }
 };
 
-module.exports.getAllProducts = async (page) => {
+module.exports.getAllProducts = async () => {
   const products = await Product.find().lean();
   return products;
 }
