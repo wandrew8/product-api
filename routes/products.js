@@ -77,10 +77,13 @@ router.get("/pages/getAll", async (req, res, next) => {
 
 //GET /products Retrieves all products
 router.get("/", async (req, res, next) => {
-    // let { page } = req.query;
-    // page = page ? Number(page) : 1;
-    // const products = await productDAO.getAll(page);
-    const products = await productDAO.getAllProducts();
+    let { page } = req.query;
+    let products;
+    if (page) {
+        products = await productDAO.getAll(page);
+    } else {
+        products = await productDAO.getAllProducts();
+    }
     res.json(products);
 });
 
